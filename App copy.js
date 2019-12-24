@@ -47,17 +47,8 @@ export default class App extends React.Component {
   }
 
   _cacheSplashResourcesAsync = async () => {
-    // const gif = require('./assets/img/loading.gif');
-    // return Asset.fromModule(gif).downloadAsync();
-    const cacheImages = gif => {
-      return Asset.fromModule(image).downloadAsync();
-    };
-    await Promise.all([
-      cacheImages,
-      Font.loadAsync({
-        'MazzardM-Medium': require('./assets/fonts/MazzardM-Medium.otf')
-      })
-    ]);
+    const gif = require('./assets/img/loading.gif');
+    return Asset.fromModule(gif).downloadAsync();
   };
 
   _cacheResourcesAsync = async () => {
@@ -68,12 +59,7 @@ export default class App extends React.Component {
       return Asset.fromModule(image).downloadAsync();
     });
 
-    await Promise.all([
-      cacheImages,
-      Font.loadAsync({
-        'MazzardM-Medium': require('./assets/fonts/MazzardM-Medium.otf')
-      })
-    ]);
+    await Promise.all(cacheImages);
     this.setState({ isAppReady: true });
   };
 }
